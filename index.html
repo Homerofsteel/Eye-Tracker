@@ -1,41 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eye-Tracker  </title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="background.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eye-Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="background.css" />
 </head>
 <body>
-
-    <div class="sky">
-        <div class="cloud cloud1"></div>
-        <div class="cloud cloud2"></div>
-        <div class="cloud cloud3"></div>
-        <div class="cloud cloud4"></div>
-    </div>
-    
-        <img src="assets/mario logo.png" alt="Mario Logo" class="logo mario_logo" >
-        <img src="assets/simpsons logo.png" alt="Simpsons Logo" class="logo simpsons_logo">
-        <img src="assets/pokemon logo.png" alt="Pokemon Logo" class="logo pokemon_logo">
-
-        <img src="assets/homer face.png" alt="Homer Face" class="face simpsons_face">
-        <img src="assets/mario face.png" alt="Mario Face" class="face mario_face">
-        <img src="assets/pokemon face.png" alt="Pokemon Face" class="face pokemon_face">
-
-
-   <div class="container">  
-    <div class="eyes-wrapper">
-      <div class="eye">
-        <div class="eyeball"></div>
-      </div>
-      <div class="eye">
-        <div class="eyeball"></div>
-      </div>
-    </div>
+  <div class="sky">
+    <div class="cloud cloud1"></div>
+    <div class="cloud cloud2"></div>
+    <div class="cloud cloud3"></div>
+    <div class="cloud cloud4"></div>
   </div>
 
-    <script src="script.js"></script>
+  <img src="assets/mario logo.png" alt="Mario Logo" class="logo mario_logo" />
+  <img src="assets/simpsons logo.png" alt="Simpsons Logo" class="logo simpsons_logo" />
+  <img src="assets/pokemon logo.png" alt="Pokemon Logo" class="logo pokemon_logo" />
+
+  <div class="container">
+<div class="character simpsons visible">
+  <img src="assets/homer face.png" alt="Homer Face" class="face simpsons_face" />
+  <div class="eyes-wrapper eyes-wrapper_simpsons">
+    <div class="eye eye_simpsons"><div class="eyeball eyeball_simpsons"></div></div>
+    <div class="eye eye_simpsons"><div class="eyeball eyeball_simpsons"></div></div>
+  </div>
+</div>
+
+<div class="character mario">
+  <img src="assets/mario face.png" alt="Mario Face" class="face mario_face" />
+  <div class="eyes-wrapper eyes-wrapper_mario">
+    <div class="eye eye_mario"><div class="eyeball eyeball_mario"></div></div>
+    <div class="eye eye_mario"><div class="eyeball eyeball_mario"></div></div>
+  </div>
+</div>
+
+<div class="character pokemon">
+  <img src="assets/pokemon face.png" alt="Pokemon Face" class="face pokemon_face" />
+  <div class="eyes-wrapper eyes-wrapper_pokemon">
+    <div class="eye eye_pokemon"><div class="eyeball eyeball_pokemon"></div></div>
+    <div class="eye eye_pokemon"><div class="eyeball eyeball_pokemon"></div></div>
+  </div>
+</div>
+
+
+  <script src="script.js"></script>
 </body>
 </html>

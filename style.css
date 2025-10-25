@@ -1,185 +1,249 @@
+/* ========================================
+   STYLES GÉNÉRAUX
+   ======================================== */
+
 body {
-    padding: 0;
-    margin: 0;
-    background: #1a1a1a;
-    overflow: hidden;
+  margin: 0;
+  padding: 0;
+  background: #1a1a1a;
+  overflow: hidden; /* Empêche le scroll */
 }
 
 .container {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2vw;
+  flex-wrap: wrap;
 }
 
-.container:before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 4em;
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
-    z-index: -1;
+/* ========================================
+   PERSONNAGES - Configuration de base
+   ======================================== */
+
+.character {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Caché par défaut */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  z-index: 1;
 }
 
-.eyes-wrapper_mario {
-    display: flex;
-    gap: 2.2em;
+/* Personnage actif/visible */
+.character.visible {
+  opacity: 1;
+  pointer-events: auto;
 }
 
-.eyes-wrapper_pokemon {
-    display: flex;
-    gap: 13.5em;
+/* ========================================
+   PERSONNAGES - Configurations spécifiques
+   ======================================== */
+
+/* --- SIMPSONS --- */
+.character.simpsons {
+  width: clamp(200px, 30vw, 600px);
 }
 
-.eyes-wrapper_simpsons {
-    display: flex;
-    gap: 2.5em;
+/* --- MARIO --- */
+.character.mario {
+  width: clamp(370px, 50vw, 1200px);
 }
 
-.eye_mario {
-    width: 7.2em;
-    height: 7.2em;
-    background-color: #ffffff;
-    border: 1px solid black;
-    border-radius: 50%;
+.character.mario .face {
+  transform: translateY(25%); /* Ajuste la position du visage */
 }
 
-.eye_pokemon {
-    width: 5.7em;
-    height: 5.7em;
-    background-color: black;
-    border: 8px solid black;
-    border-radius: 50%;
+.character.mario .eyes-wrapper {
+  top: 58%;
+  transform: translate(-50%, -30%);
+  gap: clamp(1em, 2vw, 9em);
 }
 
-.eye_simpsons {
-    width: 8.2em;
-    height: 8.2em;
-    background-color: #ffffff;
-    border: 8px solid black;
-    border-radius: 50%;
+/* --- POKÉMON --- */
+.character.pokemon {
+  width: clamp(370px, 50vw, 2000px);
 }
 
-.eyeball_mario {
-    height: 2em;
-    width: 2em;
-    background: radial-gradient(blue,green);
-    border-radius: 50%;
-    position: relative;
+.character.pokemon .face {
+  transform: translate(6%, 7%); /* Ajuste la position du visage */
 }
 
-.eyeball_pokemon {
-    height: 2.5em;
-    width: 2em;
-    background: white;
-    border-radius: 50%;
+.character.pokemon .eyes-wrapper {
+  top: 58%;
+  transform: translate(-53%, 0%);
+  gap: clamp(1em, 10vw, 10em);
 }
 
-.eyeball_simpsons {
-    height: 2em;
-    width: 2em;
-    background: black;
-    border-radius: 50%;
-    position: relative;
+/* ========================================
+   VISAGES
+   ======================================== */
+
+.face {
+  width: 100%;
+  height: auto;
+  border-radius: 0 0 6em 6em;
+  z-index: -1; /* Derrière les yeux */
 }
 
+/* ========================================
+   YEUX - Styles par défaut
+   ======================================== */
+
+/* Conteneur des yeux */
+.eyes-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: clamp(1em, 5vw, 0em);
+  margin-top: -20%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 30%);
+}
+
+/* Œil (blanc de l'œil) */
+.eye {
+  width: clamp(3em, 7vw, 9em);
+  height: clamp(3em, 7vw, 9em);
+  background: white;
+  border: clamp(2px, 0.5vw, 8px) solid black;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Pupille (bouge avec la souris) */
+.eyeball {
+  border-radius: 50%;
+  background: black;
+  /* Centré par défaut avant rotation */
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Reflet blanc dans la pupille */
 .eyeball::before {
-    content: "";
-    position: absolute;
-    height: 0.7em;
-    width: 0.5em;
-    border-radius: 50%;
-    top: 13px;
-    left: 13px;
-    transform: rotate(45deg);
+  content: "";
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  width: clamp(0.3em, 0.5vw, 0.7em);
+  height: clamp(0.3em, 0.5vw, 0.7em);
+  background: white;
+  border-radius: 50%;
 }
+
+/* ========================================
+   YEUX - Styles spécifiques par personnage
+   ======================================== */
+
+/* --- MARIO --- */
+.character.mario .eye_mario {
+  background-color: #ffffff;
+  border: 1px solid black; /* Bordure plus fine */
+  border-radius: 50%;
+}
+
+.character.mario .eyeball_mario {
+  width: clamp(0.8em, 1.5vw, 2em);
+  height: clamp(0.8em, 1.5vw, 2em);
+  background: radial-gradient(blue, green); /* Dégradé bleu-vert */
+  border-radius: 50%;
+}
+
+/* --- POKÉMON --- */
+.character.pokemon .eye_pokemon {
+  /* Yeux plus petits que les autres personnages */
+  width: clamp(0.2em, 3vw, 5em);
+  height: clamp(0.2em, 3vw, 5em);
+  background-color: black; /* Œil noir */
+  border: 8px solid black; /* Bordure épaisse */
+  border-radius: 50%;
+}
+
+.character.pokemon .eyeball_pokemon {
+  width: clamp(0.8em, 1.5vw, 2em);
+  height: clamp(0.8em, 1.5vw, 2em);
+  background: white; /* Pupille blanche */
+  border-radius: 50%;
+}
+
+/* --- SIMPSONS --- */
+.character.simpsons .eye_simpsons {
+  background-color: #ffffff;
+  border: clamp(2px, 0.5vw, 8px) solid black;
+  border-radius: 50%;
+}
+
+.character.simpsons .eyeball_simpsons {
+  width: clamp(0.8em, 1.5vw, 2em);
+  height: clamp(0.8em, 1.5vw, 2em);
+  background: black; /* Pupille noire classique */
+  border-radius: 50%;
+}
+
+/* ========================================
+   LOGOS - Sélection des personnages
+   ======================================== */
 
 .logo {
-    position: absolute;
-    bottom: 1em;
-    font-family: 'Arial', sans-serif;
-    color: #231f20;
-    width: 22%;
-    height: auto;
-    z-index: 5;
-    cursor: pointer;
-    transition: all .2s ease-in-out;
+  position: absolute;
+  width: clamp(100px, 20vw, 400px);
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  z-index: 10; /* Au-dessus de tout */
 }
 
+/* Effet survol */
+.logo:hover {
+  transform: scale(1.1);
+}
+
+/* Logo actif (personnage sélectionné) */
+.logo.active {
+  animation: pulse 1s infinite;
+  cursor: default; /* Pas de pointer car déjà actif */
+}
+
+/* Position des logos */
 .simpsons_logo {
-    bottom: 70%;
-    left: 4%;
+  bottom: 70%;
+  left: 4%;
 }
 
 .mario_logo {
-    bottom: 70%;
-    left: 70%;
+  bottom: 70%;
+  left: 70%;
 }
 
 .pokemon_logo {
-    bottom: 5%;
-    left: 3%;
+  bottom: 5%;
+  left: 3%;
 }
 
-.logo:hover{
-    transform: scale(1.1)
-}
-
-.logo.active{
-    animation: pulse 1s infinite;
-    cursor:default;
-}
-
+/* Animation de pulsation pour le logo actif */
 @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-
-.face {
-    position: absolute;
-    border-radius: 0 0 6em 6em;
-    transform: translate(-50%, -50%);
-    z-index: -5; 
-    opacity: 0;
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
-
-.simpsons_face {
-    width: 40%;
-    top: 50.5%;
-    left: 50%;
-}
-
-.mario_face {
-    width: 60%;
-    top:102%;
-    left: 50%;
-}
-
-.pokemon_face {
-    width: 90%;
-    top: 77%;
-    left: 56%;
-}
-
-.face.active {
-    opacity: 1;
-}
-
-.image-toggle {
-  position: relative;
-  width: 300px; 
-  cursor: pointer;
-}
-
