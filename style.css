@@ -81,7 +81,7 @@ body {
 .character.pokemon .eyes-wrapper {
   top: 58%;
   transform: translate(-53%, 0%);
-  gap: clamp(1em, 10vw, 10em);
+  gap: clamp(4em, 9vw, 10em);
 }
 
 /* ========================================
