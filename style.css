@@ -65,7 +65,7 @@ body {
 
 .character.mario .eyes-wrapper {
   top: 58%;
-  transform: translate(-50%, -30%);
+  transform: translate(-50%, -25%);
   gap: clamp(1em, 2vw, 9em);
 }
 
